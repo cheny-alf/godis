@@ -5,4 +5,5 @@ type Rax interface {
 	Find(key string) (string, bool)
 	Delete(key string) bool
 	Size() int
+	RemoveFirstNode()
 }
