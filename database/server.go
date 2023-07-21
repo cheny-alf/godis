@@ -124,6 +124,9 @@ func (server *Server) Exec(c redis.Connection, cmdLine [][]byte) (result redis.R
 	} else if cmdName == "command" {
 		return execCommand(cmdLine[1:])
 	} else if cmdName == "config" {
+		if len(cmdLine) != 2 {
+			return protocol.MakeArgNumErrReply(cmdName)
+		}
 		return ExecConfigCommand(cmdLine)
 	}
 
